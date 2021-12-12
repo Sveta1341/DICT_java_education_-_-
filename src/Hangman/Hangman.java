@@ -1,4 +1,6 @@
 package Hangman;
+import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 import java.util.Scanner;
 import java.util.Random;
 
@@ -10,8 +12,12 @@ public class Hangman {
         Random r=new Random();
         int randomNumber=r.nextInt(words.length);
         String random_word = (words[randomNumber]);
-        System.out.println("Guess the word: ");
-
+        char[] charArr = random_word.toCharArray();
+        for (int i=2;i<charArr.length;i++) {
+            charArr[i] = '-';
+        }
+        System.out.println(charArr);
+        System.out.println("Guess the word:");
         while(true){
             String word = in.next();
             if (word.equals(random_word)) {
