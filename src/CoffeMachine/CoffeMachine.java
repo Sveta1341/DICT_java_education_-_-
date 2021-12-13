@@ -60,6 +60,20 @@ class Machine{
                         this.cups -= 1;
                         this.beans -= beans;
                         this.money += money;
+                        System.out.println("I have enough resources,making you a coffee!");
+                }else{
+                        if (getWater()-water<0){
+                                System.out.println("Sorry, not enough water");
+                        }
+                        if (getMilk()-milk<0){
+                                System.out.println("Sorry, not enough milk");
+                        }
+                        if (getCups() == 0){
+                                System.out.println("Sorry, not enough cups");
+                        }
+                        if(getBeans()-beans<0){
+                                System.out.println("Sorry, not enough beans");
+                        }
                 }
 
         }
@@ -70,29 +84,30 @@ public class CoffeMachine {
         public static void main(String args[]) {
                 Machine machine = new Machine();
             Scanner in = new Scanner(System.in);
-            machine.getIngridients();
-            System.out.println("Write action (buy, fill, take):");
-            String action = in.nextLine();
-            if (Objects.equals(action,"buy")){
-                    System.out.println("What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino:");
-                    int coffee = in.nextInt();
-                    if(coffee == 1){
-                            machine.examination(250,0,16, 4);
-                    }
-                    else if(coffee == 2){
-                            machine.examination(350,75,20, 7);
-                    }
-                    else if(coffee == 3){
-                            machine.examination(200,100,12, 6);
-                    }
-                    machine.getIngridients();
-            } else if (Objects.equals(action,"fill")){
-                    machine.setIngridients(in);
-                    machine.getIngridients();
+            while (true) {
+                    System.out.println("Write action (buy, fill, take,remaining,exit):");
+                    String action = in.nextLine();
+                    if (Objects.equals(action, "buy")) {
+                            System.out.println("What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino,back-to main menu:");
+                            int coffee = in.nextInt();
+                            if (coffee == 1) {
+                                    machine.examination(250, 0, 16, 4);
+                            } else if (coffee == 2) {
+                                    machine.examination(350, 75, 20, 7);
+                            } else if (coffee == 3) {
+                                    machine.examination(200, 100, 12, 6);
+                            }
 
-            } else if (Objects.equals(action,"take")) {
-                    machine.take();
-                    machine.getIngridients();
+                    } else if (Objects.equals(action, "fill")) {
+                            machine.setIngridients(in);
+                    } else if (Objects.equals(action, "take")) {
+                            machine.take();
+                    } else if (Objects.equals(action, "remaining")) {
+                            machine.getIngridients();
+                    } else if (Objects.equals(action, "exit")) {
+                            break;
+
+                    }
             }
         }
 }
