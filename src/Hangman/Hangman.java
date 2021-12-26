@@ -47,6 +47,11 @@ public class Hangman {
                         letters.set(i, letter.charAt(0));
                         break;
                     }
+                    else if (letters.get(i).toString().equals(letter)){
+                        System.out.println("No improvements");
+                        health-=1;
+                        break;
+                    }
                 }
             }
             else{
