@@ -1,8 +1,5 @@
 package Hangman;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class Hangman {
     public static void main(String args[]) {
@@ -11,6 +8,11 @@ public class Hangman {
         String[] alphabet = new String[]{"q","w","e","r","t","y","u","i","o","p","a","s","d","f","g","h","j","k","l","z","x","c","v","b","n","m"};
         ArrayList<Character> letters = new ArrayList<>();
         String[] words  = {"python", "java", "javascript", "kotlin"};
+        System.out.println("Type 'play' to play the game, 'exit' to quit:");
+        String game = in.next();
+        if(Objects.equals(game, "exit")){
+            System.exit(0);
+        }
         Random r=new Random();
         int randomNumber=r.nextInt(words.length);
         int health = 8;
@@ -41,6 +43,7 @@ public class Hangman {
                 else{System.out.print("-");}
 
             }
+
             System.out.println("\n" + "Input a letter:");
             String letter = in.next();
             if (letter.length()>1){
